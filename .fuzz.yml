@@ -1,0 +1,13 @@
+fuzz:
+  build_directory: artifacts
+  ide: hardhat
+  deployed_contract_address: '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+  number_of_cores: 1
+  time_limit: 15m
+  project: Daedaluzz
+  campaign_name_prefix: Maze
+  rpc_url: 'http://localhost:8545'
+  faas_url: 'http://fuzzing.diligence.tools'
+  key: ''
+  targets:
+    - contracts/maze.sol

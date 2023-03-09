@@ -1,0 +1,8 @@
+{
+  "name":"daedaluzz",
+  "version":"1.0.0",
+  "devDependencies":{
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.13.0"
+  }
+}
