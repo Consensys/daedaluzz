@@ -1,0 +1,97 @@
+diff --git a/Dockerfile b/Dockerfile
+index 8794b18..6d0caf3 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -1,6 +1,6 @@
+ FROM trailofbits/echidna:latest
+ 
+-RUN apt-get update && apt-get install -y python3.8-dev
++RUN apt-get update && apt-get install -y python3.8-dev python3-pip
+ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+     update-alternatives  --set python /usr/bin/python3.8
+ 
+@@ -11,7 +11,7 @@ COPY . /optik
+ 
+ WORKDIR /optik
+ 
+-RUN python -m pip install .
++RUN python -m pip install --root-user-action=ignore .
+ 
+ RUN mkdir /workdir
+ 
+diff --git a/optik/coverage/coverage.py b/optik/coverage/coverage.py
+index 3fbc6e0..e5d0274 100644
+--- a/optik/coverage/coverage.py
++++ b/optik/coverage/coverage.py
+@@ -3,6 +3,7 @@ from dataclasses import dataclass
+ from maat import Constraint, MaatEngine, EVENT, WHEN
+ from ..common.exceptions import CoverageException
+ from ..common.world import WorldMonitor, EVMRuntime
++from random import Random
+ 
+ 
+ @dataclass(eq=True, frozen=True)
+@@ -78,6 +79,8 @@ class Coverage(WorldMonitor):
+         self.covered: Dict[CoverageState, int] = {}
+         self.bifurcations: List[Bifurcation] = []
+         self.current_input: str = "<unspecified>"
++        self.rnd = Random(0)
++        self.branch_record_prob = 1.0
+ 
+     def get_state(self, **kwargs) -> CoverageState:
+         """Abstract base method that returns the current coverage state"""
+@@ -106,7 +109,7 @@ class Coverage(WorldMonitor):
+ 
+         # Record only if bifurcation to code that was not yet covered
+         alt_state = self.get_state(inst_addr=alt_target, engine=m)
+-        if alt_state not in self.covered:
++        if alt_state not in self.covered and (1.0 <= self.branch_record_prob or self.rnd.random() < self.branch_record_prob):
+             self.bifurcations.append(
+                 Bifurcation(
+                     inst_addr=m.info.addr,
+diff --git a/optik/echidna/__main__.py b/optik/echidna/__main__.py
+index deaa631..bd05c2b 100644
+--- a/optik/echidna/__main__.py
++++ b/optik/echidna/__main__.py
+@@ -125,6 +125,14 @@ def run_hybrid_echidna(arguments: List[str]) -> None:
+     else:
+         raise GenericException(f"Unsupported coverage mode: {args.cov_mode}")
+ 
++    try:
++        branch_record_prob = float(args.branch_record_prob)
++        if 0.0 < branch_record_prob and branch_record_prob <= 1.0:
++            cov.rnd.seed(args.seed)
++            cov.branch_record_prob = branch_record_prob
++    except ValueError:
++        pass
++
+     # Incremental seeding with feed-echidna
+     prev_threshold: Optional[int] = infer_previous_incremental_threshold(
+         coverage_dir
+@@ -535,6 +543,14 @@ def parse_arguments(args: List[str]) -> argparse.Namespace:
+         help="Disable the beautiful terminal display",
+     )
+ 
++    parser.add_argument(
++        "--branch-record-prob",
++        type=str,
++        help="Probability for recording a branch that should be flipped",
++        default="1.0",
++        metavar="PROBABILITY",
++    )
++
+     return parser.parse_args(args)
+ 
+ 
+diff --git a/optik/echidna/runner.py b/optik/echidna/runner.py
+index aa910a6..c2ea73d 100644
+--- a/optik/echidna/runner.py
++++ b/optik/echidna/runner.py
+@@ -273,6 +273,7 @@ def run_echidna_campaign(
+                 "incremental_threshold",
+                 "logs",
+                 "no_display",
++                "branch_record_prob"
+             ]
+             and not val is None
+         ):

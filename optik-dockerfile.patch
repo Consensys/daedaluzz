@@ -1,0 +1,12 @@
+diff --git a/Dockerfile b/Dockerfile
+index 8794b18..cb175a5 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -1,6 +1,6 @@
+ FROM trailofbits/echidna:latest
+ 
+-RUN apt-get update && apt-get install -y python3.8-dev
++RUN apt-get update && apt-get install -y python3.8-dev python3-pip
+ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+     update-alternatives  --set python /usr/bin/python3.8
+ 
