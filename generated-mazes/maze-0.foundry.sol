@@ -993,7 +993,6 @@ contract TestMaze is Test {
   function setUp() external {
     m = new Maze();
   }
-  function invariant_0() external { if (m.found(0)) { fail("0"); } }
   function invariant_1() external { if (m.found(1)) { fail("1"); } }
   function invariant_2() external { if (m.found(2)) { fail("2"); } }
   function invariant_3() external { if (m.found(3)) { fail("3"); } }

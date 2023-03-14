@@ -142,7 +142,7 @@ contract C {
 	if parseErr != nil {
 		return parseErr
 	}
-	outFile, createErr := os.Create("tmp.sol")
+	outFile, createErr := os.Create("generated-maze.sol")
 	if createErr != nil {
 		return createErr
 	}
@@ -185,20 +185,19 @@ func generateBenchmarkStateful() error {
 	argsStr := strings.Join(args, ", ")
 
 	rnd := rand.New(rand.NewSource(seed))
-	var rndLinearStmtBlock func(depth, indent, px, py int) string
-	rndLinearStmtBlock = func(depth, indent, px, py int) string {
+	var rndLinearStmtBlock func(depth, indent, rv int) string
+	rndLinearStmtBlock = func(depth, indent, rv int) string {
 		if depth < 1 {
 			indentStr := strings.Repeat("  ", indent)
 			return fmt.Sprintf(
-				`%vemit AssertionFailed("%v,%v"); assert(false);  // bug`,
+				`%vemit AssertionFailed("%v"); assert(false);  // bug`,
 				indentStr,
-				px,
-				py,
+				rv,
 			)
 		}
 		indentStr := strings.Repeat("  ", indent)
 		rCond := rndCond(rnd, numFuncParams, maxConst, additionalInputs)
-		thBlock := rndLinearStmtBlock(depth-1, indent+1, px, py)
+		thBlock := rndLinearStmtBlock(depth-1, indent+1, rv)
 		return fmt.Sprintf(
 			`%vif (%v) {
 %v
@@ -220,7 +219,7 @@ func generateBenchmarkStateful() error {
 			if 0 < i || 0 < j {
 				d := rnd.Intn(maxDepth + 1)
 				if minDepth <= d {
-					bl = rndLinearStmtBlock(d, 4, i, j)
+					bl = rndLinearStmtBlock(d, 4, rv)
 				} else {
 					bl = "        require(false);  // wall"
 				}
@@ -298,7 +297,7 @@ contract Maze {
 	if parseErr != nil {
 		return parseErr
 	}
-	outFile, createErr := os.Create("tmp.sol")
+	outFile, createErr := os.Create("generated-maze.sol")
 	if createErr != nil {
 		return createErr
 	}

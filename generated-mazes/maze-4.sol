@@ -50,7 +50,7 @@ contract Maze {
                                 if (p4 >= uint64(p6 + p7)) {
                                   if (p1 < uint64(uint64(4) + p4)) {
                                     if (p7 > uint64(uint64(1) * p1)) {
-                                      emit AssertionFailed("0,1"); assert(false);  // bug
+                                      emit AssertionFailed("1"); assert(false);  // bug
                                     }
                                   }
                                 }
@@ -75,7 +75,7 @@ contract Maze {
               if (p6 != p6) {
                 if (p1 == uint64(29)) {
                   if (p2 < uint64(p5 + p1)) {
-                    emit AssertionFailed("0,2"); assert(false);  // bug
+                    emit AssertionFailed("2"); assert(false);  // bug
                   }
                 }
               }
@@ -100,7 +100,7 @@ contract Maze {
                                 if (p6 <= uint64(p7 * p3)) {
                                   if (p2 < uint64(p2 + p5)) {
                                     if (p2 == uint64(p7 + p1)) {
-                                      emit AssertionFailed("0,3"); assert(false);  // bug
+                                      emit AssertionFailed("3"); assert(false);  // bug
                                     }
                                   }
                                 }
@@ -125,7 +125,7 @@ contract Maze {
       if (x == 0 && y == 5) {
         if (p4 <= uint64(p5 * p7)) {
           if (p0 < uint64(uint64(9) * p3)) {
-            emit AssertionFailed("0,5"); assert(false);  // bug
+            emit AssertionFailed("5"); assert(false);  // bug
           }
         }
         return 5;
@@ -133,7 +133,7 @@ contract Maze {
       if (x == 0 && y == 6) {
         if (p6 >= p2) {
           if (p1 == uint64(uint64(22) + p2)) {
-            emit AssertionFailed("0,6"); assert(false);  // bug
+            emit AssertionFailed("6"); assert(false);  // bug
           }
         }
         return 6;
@@ -145,7 +145,7 @@ contract Maze {
       if (x == 1 && y == 1) {
         if (p2 < uint64(uint64(0) * p4)) {
           if (p5 < uint64(p3 + p7)) {
-            emit AssertionFailed("1,1"); assert(false);  // bug
+            emit AssertionFailed("8"); assert(false);  // bug
           }
         }
         return 8;
@@ -157,7 +157,7 @@ contract Maze {
       if (x == 1 && y == 3) {
         if (p6 == uint64(p0 + p1)) {
           if (p0 == uint64(uint64(33) * p0)) {
-            emit AssertionFailed("1,3"); assert(false);  // bug
+            emit AssertionFailed("10"); assert(false);  // bug
           }
         }
         return 10;
@@ -166,7 +166,7 @@ contract Maze {
         if (p1 <= p4) {
           if (p0 <= uint64(uint64(56) + p4)) {
             if (p3 != uint64(uint64(1) + p1)) {
-              emit AssertionFailed("1,4"); assert(false);  // bug
+              emit AssertionFailed("11"); assert(false);  // bug
             }
           }
         }
@@ -189,7 +189,7 @@ contract Maze {
                                   if (p7 > uint64(p1 + p5)) {
                                     if (p1 > p1) {
                                       if (p1 <= uint64(uint64(64) * p1)) {
-                                        emit AssertionFailed("1,5"); assert(false);  // bug
+                                        emit AssertionFailed("12"); assert(false);  // bug
                                       }
                                     }
                                   }
@@ -223,7 +223,7 @@ contract Maze {
                               if (p2 != p1) {
                                 if (p0 == p4) {
                                   if (p3 != uint64(p2 * p3)) {
-                                    emit AssertionFailed("1,6"); assert(false);  // bug
+                                    emit AssertionFailed("13"); assert(false);  // bug
                                   }
                                 }
                               }
@@ -263,7 +263,7 @@ contract Maze {
                               if (p7 > uint64(p3 * p0)) {
                                 if (p1 < uint64(p2 + p2)) {
                                   if (p6 <= uint64(uint64(5) + p3)) {
-                                    emit AssertionFailed("2,2"); assert(false);  // bug
+                                    emit AssertionFailed("16"); assert(false);  // bug
                                   }
                                 }
                               }
@@ -283,7 +283,7 @@ contract Maze {
       if (x == 2 && y == 3) {
         if (p6 == uint64(uint64(63) * p0)) {
           if (p6 >= p7) {
-            emit AssertionFailed("2,3"); assert(false);  // bug
+            emit AssertionFailed("17"); assert(false);  // bug
           }
         }
         return 17;
@@ -305,7 +305,7 @@ contract Maze {
                                   if (p0 > uint64(p4 + p7)) {
                                     if (p0 < uint64(p4 + p0)) {
                                       if (p1 < uint64(p0 + p5)) {
-                                        emit AssertionFailed("2,4"); assert(false);  // bug
+                                        emit AssertionFailed("18"); assert(false);  // bug
                                       }
                                     }
                                   }
@@ -340,7 +340,7 @@ contract Maze {
                                 if (p6 < uint64(uint64(48) + p6)) {
                                   if (p6 == uint64(p5 + p4)) {
                                     if (p2 >= uint64(uint64(6) * p0)) {
-                                      emit AssertionFailed("2,5"); assert(false);  // bug
+                                      emit AssertionFailed("19"); assert(false);  // bug
                                     }
                                   }
                                 }
@@ -378,7 +378,7 @@ contract Maze {
                                 if (p1 >= uint64(uint64(7) * p7)) {
                                   if (p7 <= uint64(uint64(58) * p4)) {
                                     if (p4 != uint64(p7 * p3)) {
-                                      emit AssertionFailed("3,0"); assert(false);  // bug
+                                      emit AssertionFailed("21"); assert(false);  // bug
                                     }
                                   }
                                 }
@@ -401,7 +401,7 @@ contract Maze {
           if (p1 <= uint64(uint64(20) + p3)) {
             if (p5 < uint64(43)) {
               if (p2 <= uint64(p4 * p2)) {
-                emit AssertionFailed("3,1"); assert(false);  // bug
+                emit AssertionFailed("22"); assert(false);  // bug
               }
             }
           }
@@ -415,7 +415,7 @@ contract Maze {
               if (p1 == uint64(p1 + p0)) {
                 if (p0 == uint64(uint64(8) + p4)) {
                   if (p2 != uint64(p6 + p3)) {
-                    emit AssertionFailed("3,2"); assert(false);  // bug
+                    emit AssertionFailed("23"); assert(false);  // bug
                   }
                 }
               }
@@ -437,7 +437,7 @@ contract Maze {
                           if (p5 < uint64(p2 + p7)) {
                             if (p4 != uint64(38)) {
                               if (p6 <= uint64(60)) {
-                                emit AssertionFailed("3,3"); assert(false);  // bug
+                                emit AssertionFailed("24"); assert(false);  // bug
                               }
                             }
                           }
@@ -466,7 +466,7 @@ contract Maze {
                             if (p2 != uint64(p0 + p4)) {
                               if (p1 < p4) {
                                 if (p7 <= uint64(uint64(58) * p6)) {
-                                  emit AssertionFailed("3,4"); assert(false);  // bug
+                                  emit AssertionFailed("25"); assert(false);  // bug
                                 }
                               }
                             }
@@ -494,7 +494,7 @@ contract Maze {
                         if (p1 < uint64(uint64(53) * p0)) {
                           if (p1 != uint64(uint64(59) * p6)) {
                             if (p6 == uint64(p5 * p7)) {
-                              emit AssertionFailed("3,5"); assert(false);  // bug
+                              emit AssertionFailed("26"); assert(false);  // bug
                             }
                           }
                         }
@@ -512,7 +512,7 @@ contract Maze {
         if (p1 > p7) {
           if (p2 >= uint64(43)) {
             if (p5 == uint64(3)) {
-              emit AssertionFailed("3,6"); assert(false);  // bug
+              emit AssertionFailed("27"); assert(false);  // bug
             }
           }
         }
@@ -524,7 +524,7 @@ contract Maze {
             if (p3 > uint64(p6 + p1)) {
               if (p7 < uint64(uint64(30) + p1)) {
                 if (p7 > p2) {
-                  emit AssertionFailed("4,0"); assert(false);  // bug
+                  emit AssertionFailed("28"); assert(false);  // bug
                 }
               }
             }
@@ -548,7 +548,7 @@ contract Maze {
                                 if (p6 > uint64(p5 * p6)) {
                                   if (p5 >= uint64(uint64(1) + p3)) {
                                     if (p5 <= uint64(uint64(33) + p0)) {
-                                      emit AssertionFailed("4,1"); assert(false);  // bug
+                                      emit AssertionFailed("29"); assert(false);  // bug
                                     }
                                   }
                                 }
@@ -581,7 +581,7 @@ contract Maze {
                               if (p0 > p3) {
                                 if (p2 < uint64(45)) {
                                   if (p5 != uint64(p5 + p1)) {
-                                    emit AssertionFailed("4,2"); assert(false);  // bug
+                                    emit AssertionFailed("30"); assert(false);  // bug
                                   }
                                 }
                               }
@@ -607,7 +607,7 @@ contract Maze {
                   if (p4 > uint64(uint64(21) * p6)) {
                     if (p0 != uint64(uint64(59) + p0)) {
                       if (p5 >= uint64(p4 + p1)) {
-                        emit AssertionFailed("4,3"); assert(false);  // bug
+                        emit AssertionFailed("31"); assert(false);  // bug
                       }
                     }
                   }
@@ -623,7 +623,7 @@ contract Maze {
           if (p2 != uint64(uint64(39) + p5)) {
             if (p4 == uint64(uint64(7) + p2)) {
               if (p3 >= uint64(18)) {
-                emit AssertionFailed("4,4"); assert(false);  // bug
+                emit AssertionFailed("32"); assert(false);  // bug
               }
             }
           }
@@ -636,7 +636,7 @@ contract Maze {
             if (p7 != uint64(uint64(57) + p4)) {
               if (p7 > p1) {
                 if (p2 == uint64(p2 + p0)) {
-                  emit AssertionFailed("4,5"); assert(false);  // bug
+                  emit AssertionFailed("33"); assert(false);  // bug
                 }
               }
             }
@@ -659,7 +659,7 @@ contract Maze {
                               if (p7 != uint64(39)) {
                                 if (p5 != p1) {
                                   if (p0 >= uint64(p3 + p1)) {
-                                    emit AssertionFailed("4,6"); assert(false);  // bug
+                                    emit AssertionFailed("34"); assert(false);  // bug
                                   }
                                 }
                               }
@@ -691,7 +691,7 @@ contract Maze {
                               if (p7 > uint64(44)) {
                                 if (p6 == uint64(p4 * p1)) {
                                   if (p2 < uint64(uint64(50) + p4)) {
-                                    emit AssertionFailed("5,0"); assert(false);  // bug
+                                    emit AssertionFailed("35"); assert(false);  // bug
                                   }
                                 }
                               }
@@ -711,7 +711,7 @@ contract Maze {
       if (x == 5 && y == 1) {
         if (p1 <= uint64(uint64(45) * p3)) {
           if (p1 > uint64(p3 + p1)) {
-            emit AssertionFailed("5,1"); assert(false);  // bug
+            emit AssertionFailed("36"); assert(false);  // bug
           }
         }
         return 36;
@@ -723,7 +723,7 @@ contract Maze {
               if (p3 >= p0) {
                 if (p0 == uint64(55)) {
                   if (p3 != uint64(p2 * p7)) {
-                    emit AssertionFailed("5,2"); assert(false);  // bug
+                    emit AssertionFailed("37"); assert(false);  // bug
                   }
                 }
               }
@@ -742,7 +742,7 @@ contract Maze {
                     if (p3 < uint64(uint64(36) * p4)) {
                       if (p0 >= uint64(uint64(15) + p4)) {
                         if (p5 == p1) {
-                          emit AssertionFailed("5,3"); assert(false);  // bug
+                          emit AssertionFailed("38"); assert(false);  // bug
                         }
                       }
                     }
@@ -763,7 +763,7 @@ contract Maze {
                   if (p3 != uint64(p4 + p4)) {
                     if (p6 != p2) {
                       if (p0 >= uint64(23)) {
-                        emit AssertionFailed("5,4"); assert(false);  // bug
+                        emit AssertionFailed("39"); assert(false);  // bug
                       }
                     }
                   }
@@ -782,7 +782,7 @@ contract Maze {
                 if (p0 > uint64(9)) {
                   if (p1 < uint64(p5 * p2)) {
                     if (p5 != uint64(p1 * p1)) {
-                      emit AssertionFailed("5,5"); assert(false);  // bug
+                      emit AssertionFailed("40"); assert(false);  // bug
                     }
                   }
                 }
@@ -796,7 +796,7 @@ contract Maze {
         if (p5 != uint64(p4 + p0)) {
           if (p3 == uint64(p6 * p3)) {
             if (p7 == uint64(p1 * p7)) {
-              emit AssertionFailed("5,6"); assert(false);  // bug
+              emit AssertionFailed("41"); assert(false);  // bug
             }
           }
         }
@@ -813,7 +813,7 @@ contract Maze {
               if (p5 <= uint64(p0 * p0)) {
                 if (p1 >= uint64(uint64(34) * p0)) {
                   if (p6 != uint64(p7 * p7)) {
-                    emit AssertionFailed("6,1"); assert(false);  // bug
+                    emit AssertionFailed("43"); assert(false);  // bug
                   }
                 }
               }
@@ -835,7 +835,7 @@ contract Maze {
                           if (p1 == uint64(p6 * p0)) {
                             if (p1 >= uint64(p7 * p6)) {
                               if (p1 < uint64(uint64(52) * p5)) {
-                                emit AssertionFailed("6,2"); assert(false);  // bug
+                                emit AssertionFailed("44"); assert(false);  // bug
                               }
                             }
                           }
@@ -853,7 +853,7 @@ contract Maze {
       if (x == 6 && y == 3) {
         if (p1 < p0) {
           if (p5 <= p0) {
-            emit AssertionFailed("6,3"); assert(false);  // bug
+            emit AssertionFailed("45"); assert(false);  // bug
           }
         }
         return 45;
@@ -863,7 +863,7 @@ contract Maze {
           if (p5 == uint64(uint64(21) + p4)) {
             if (p1 >= uint64(uint64(29) + p5)) {
               if (p3 > uint64(uint64(60) + p2)) {
-                emit AssertionFailed("6,4"); assert(false);  // bug
+                emit AssertionFailed("46"); assert(false);  // bug
               }
             }
           }
@@ -883,7 +883,7 @@ contract Maze {
                           if (p4 < uint64(p4 * p5)) {
                             if (p1 >= p3) {
                               if (p3 > uint64(uint64(27) + p6)) {
-                                emit AssertionFailed("6,5"); assert(false);  // bug
+                                emit AssertionFailed("47"); assert(false);  // bug
                               }
                             }
                           }
@@ -906,7 +906,7 @@ contract Maze {
                 if (p7 < uint64(p7 + p1)) {
                   if (p4 == p2) {
                     if (p2 == uint64(28)) {
-                      emit AssertionFailed("6,6"); assert(false);  // bug
+                      emit AssertionFailed("48"); assert(false);  // bug
                     }
                   }
                 }
