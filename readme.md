@@ -8,6 +8,12 @@ Each generated benchmark contract contains many assertions (some can fail, but o
 
 On a high level, each contract keeps track of the current position in a 2-dimensional maze of a fixed dimension (for instance, 7x7). Each transaction can move the current position to explore the maze. Some locations in the maze are unreachable (so-called "walls"), while others may contain a "bug" that can be found by the fuzzer when providing specific transaction inputs. Some of these bugs cannot be reached since the path conditions are infeasible.
 
+The generated benchmarks try to capture two key challenges when fuzzing smart contracts:
+1. code that can only be reached by satisfying complex transaction-input constraints
+2. code that can only be reached by first reaching a specific state of the contract through multiple prior transactions
+
+In the future, we may extend the benchmark generator to incorporate other challenges we often encounter when fuzzing real-world contracts.
+
 We have used Daedaluzz to generate a set of 5 benchmark contracts (see `generated-mazes` folder). Yet, one can easily generate new ones by modifying the random seed and other hyperparameters (for instance, `numFuncParams`, `dimX`, and `maxDepth`).
 
 One can also tweak the benchmark generator to emit custom benchmark variants for fuzzers that do not support the default benchmarks. For instance, we have used it to produce custom benchmark instances for the Foundry/Forge fuzzer (see files ending in `.foundry.sol` in the `generated-mazes` folder).
