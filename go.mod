@@ -1,4 +1,4 @@
-module github.com/wuestholz/daedaluzz
+module github.com/consensys/daedaluzz
 
 go 1.15
 
