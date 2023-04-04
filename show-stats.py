@@ -9,31 +9,8 @@ np.seterr(invalid="ignore")
 
 fuzzers = [
     "harvey",
-    # "echidna",
-    # "echidna-alt-1",
-    "echidna-alt-2",
-    # "echidna-alt-3",
-    # "foundry",
-    # "foundry-alt-1",
-    # "foundry-alt-2",
-    "foundry-alt-3",
-    # "foundry-alt-4",
-    # "foundry-alt-5",
-    # "hybrid-echidna",
-    # "hybrid-echidna-alt-1",
-    # "hybrid-echidna-alt-2",
-    "hybrid-echidna-alt-3",
-    "hybrid-echidna-alt-4",
-    # "hybrid-echidna-alt-5",
-    # "hybrid-echidna-alt-6",
-    # "hybrid-echidna-alt-7",
-    # "hybrid-echidna-alt-8",
-    # "hybrid-echidna-alt-9",
-    "hybrid-echidna-alt-10",
-    "hybrid-echidna-alt-11",
-    "hybrid-echidna-alt-12",
-    "hybrid-echidna-alt-13",
-    "hybrid-echidna-alt-14",
+    "echidna",
+    "foundry",
 ]
 
 
@@ -136,7 +113,7 @@ def create_bar_chart(total_bugs, time_limit):
     plt.savefig(f"{file_name}.png", dpi=300)
 
 
-time_limit = 7200
+time_limit = 14400
 create_bar_chart(total_bugs, time_limit)
 
 
@@ -226,8 +203,11 @@ def create_line_plot(fuzzers, time_limit, first, second, x_scale="linear"):
     plt.savefig(f"{file_name}.png", dpi=300)
 
 
-fuzzer_to_plot = ["harvey", "foundry-alt-3", "hybrid-echidna-alt-3", "hybrid-echidna-alt-10", "hybrid-echidna-alt-11", "hybrid-echidna-alt-12", "hybrid-echidna-alt-13", "hybrid-echidna-alt-14"]
+fuzzer_to_plot = [
+    "harvey",
+    "foundry",
+]
 first = "harvey"
-second = "foundry-alt-3"
+second = "foundry"
 slack = 200
 create_line_plot(fuzzer_to_plot, time_limit + slack, first, second)

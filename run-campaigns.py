@@ -27,7 +27,8 @@ elif fuzzer_name == "foundry":
     docker_image = "ghcr.io/foundry-rs/foundry@sha256:26452355c76ae359af672261fdc3b83c77792c40df5b68adbde1a87c144351ea"
 elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
-time_limit = 7200
+time_limit = 14400
+include_raw_output = False
 maze_id_start = 0
 maze_id_end = 5
 rnd_seed_start = 0
@@ -182,9 +183,9 @@ def process_all_tasks(tasks):
                         text=True,
                     )
                 elif (
-                    fuzzer_name == "echidna"
-                    or fuzzer_name == "foundry"
-                    or fuzzer_name == "hybrid-echidna"
+                        fuzzer_name == "echidna"
+                        or fuzzer_name == "foundry"
+                        or fuzzer_name == "hybrid-echidna"
                 ):
                     proc = subprocess.Popen(
                         " ".join(exe),
@@ -302,9 +303,10 @@ def process_all_tasks(tasks):
                     "random-seed": rnd_seed,
                     "duration": duration,
                     "violations": violations,
-                    "raw-output": fuzzer_output,
                 }
             )
+            if include_raw_output:
+                res["raw-output"] = fuzzer_output
             task["result"] = res
         if all_done:
             break
