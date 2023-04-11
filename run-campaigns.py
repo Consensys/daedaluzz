@@ -22,9 +22,9 @@ fuzzer_name = args.fuzzer_name
 docker_image = "harvey-cli:0.0.113"
 fuzzer_exe = "../harvey-cli/harvey-cli"
 if fuzzer_name == "echidna":
-    docker_image = "ghcr.io/crytic/echidna/echidna:v2.1.0"
+    docker_image = "ghcr.io/crytic/echidna/echidna:v2.1.1"
 elif fuzzer_name == "foundry":
-    docker_image = "ghcr.io/foundry-rs/foundry@sha256:26452355c76ae359af672261fdc3b83c77792c40df5b68adbde1a87c144351ea"
+    docker_image = "ghcr.io/foundry-rs/foundry@sha256:e3ba202249cccdffafc0d0e90c43baca8f03e4b0d7e273c0d33b8a5e3cea1eb7"
 elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
 time_limit = 14400
