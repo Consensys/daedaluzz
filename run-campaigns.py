@@ -27,7 +27,7 @@ elif fuzzer_name == "foundry":
     docker_image = "ghcr.io/foundry-rs/foundry@sha256:e3ba202249cccdffafc0d0e90c43baca8f03e4b0d7e273c0d33b8a5e3cea1eb7"
 elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
-time_limit = 14400
+time_limit = 28800
 include_raw_output = False
 maze_id_start = 0
 maze_id_end = 5

@@ -113,7 +113,7 @@ def create_bar_chart(total_bugs, time_limit):
     plt.savefig(f"{file_name}.png", dpi=300)
 
 
-time_limit = 14400
+time_limit = 28800
 create_bar_chart(total_bugs, time_limit)
 
 
