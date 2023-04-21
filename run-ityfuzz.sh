@@ -10,4 +10,5 @@ mkdir corpus
 solc /daedaluzz/generated-mazes/maze-$3.sol --abi --bin --overwrite -o ityfuzz-tmp/ --optimize --optimize-runs 99999
 
 TIME_LIMIT=$2
-timeout -n $TIME_LIMIT /bins/ityfuzz-offchain -t "ityfuzz-tmp/*" | grep log
+timeout -n $TIME_LIMIT /bins/cli_print_logs -t "ityfuzz-tmp/*" | grep log
+

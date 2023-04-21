@@ -28,7 +28,7 @@ elif fuzzer_name == "foundry":
 elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
 elif fuzzer_name == "ityfuzz":
-    docker_image = "fuzzland/ityfuzz:print-logs"
+    docker_image = "fuzzland/ityfuzz:v0.0.1"
 time_limit = 28800
 include_raw_output = False
 maze_id_start = 0
