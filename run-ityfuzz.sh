@@ -1,3 +1,4 @@
+#!/bin/bash
 cd /daedaluzz
 solc-select install 0.8.19
 solc-select use 0.8.19

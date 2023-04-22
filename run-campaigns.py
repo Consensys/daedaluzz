@@ -29,14 +29,14 @@ elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
 elif fuzzer_name == "ityfuzz":
     docker_image = "fuzzland/ityfuzz:v0.0.1"
-time_limit = 28800
+time_limit = 600
 include_raw_output = False
 maze_id_start = 0
-maze_id_end = 5
+maze_id_end = 4
 rnd_seed_start = 0
-rnd_seed_end = 8
+rnd_seed_end = 2
 cores_start = 1
-cores_end = 41
+cores_end = 20
 memory_limit = 32000
 # We have compiled each contract to get its creation bytecode (using solc 0.8.19+commit.7dd6d404 with 200 optimizer runs).
 maze_code = dict(
@@ -155,7 +155,7 @@ def process_all_tasks(tasks):
                             "docker",
                             "run",
                             "--rm",
-                            "-i",
+                            "-ti",
                             f"--cpuset-cpus={core_id}",
                             f"--memory={memory_limit}m",
                             f"--memory-swap={memory_limit}m",
@@ -206,6 +206,7 @@ def process_all_tasks(tasks):
                         or fuzzer_name == "hybrid-echidna"
                         or fuzzer_name == "ityfuzz"
                 ):
+                    print(" ".join(exe))
                     proc = subprocess.Popen(
                         " ".join(exe),
                         stdout=out_file,
@@ -323,7 +324,7 @@ def process_all_tasks(tasks):
                     flags=re.M,
                 )
                 for (ts, log_msg) in ms:
-                    violations[ts - task["start-time"]] = abi.decode(['string'], bytes.fromhex(log_msg))
+                    violations[int(abi.decode(['string'], bytes.fromhex(log_msg))[0])] = int(ts) - task["start-time"] #= abi.decode(['string'], bytes.fromhex(log_msg))
 
             maze_id = task["maze-id"]
             rnd_seed = task["rnd-seed"]
