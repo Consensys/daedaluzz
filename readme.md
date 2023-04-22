@@ -32,6 +32,7 @@ The repository also includes infrastructure (for instance, scripts and Dockerfil
 - [Foundry/Forge](https://github.com/foundry-rs/foundry/tree/master/forge)
 - [Harvey](https://mariachris.github.io/Pubs/FSE-2020-Harvey.pdf)
 - [Hybrid-Echidna](https://github.com/crytic/optik)
+- [ItyFuzz](https://github.com/fuzzland/ityfuzz)
 
 The `run-all-fuzzers.sh` script can be used to benchmark the above fuzzers, and the `show-stats.py` script can be used to aggregate and visualize the results.
 
