@@ -27,6 +27,8 @@ elif fuzzer_name == "foundry":
     docker_image = "ghcr.io/foundry-rs/foundry@sha256:e3ba202249cccdffafc0d0e90c43baca8f03e4b0d7e273c0d33b8a5e3cea1eb7"
 elif fuzzer_name == "hybrid-echidna":
     docker_image = "hybrid-echidna:v0.0.2"
+elif fuzzer_name == "ityfuzz":
+    docker_image = "fuzzland/ityfuzz:v0.0.1"
 time_limit = 28800
 include_raw_output = False
 maze_id_start = 0
@@ -147,6 +149,22 @@ def process_all_tasks(tasks):
                             f"{docker_image}",
                             f"{task_idx} {time_limit} {maze_id} {rnd_seed}",
                         ]
+                    elif fuzzer_name == "ityfuzz":
+                        wd = os.getcwd()
+                        exe = [
+                            "docker",
+                            "run",
+                            "--rm",
+                            "-ti",
+                            f"--cpuset-cpus={core_id}",
+                            f"--memory={memory_limit}m",
+                            f"--memory-swap={memory_limit}m",
+                            f"--mount=type=bind,source={wd},target=/daedaluzz",
+                            "--workdir=/daedaluzz",
+                            '--entrypoint="./run-ityfuzz.sh"',
+                            f"{docker_image}",
+                            f"{task_idx} {time_limit} {maze_id} {rnd_seed}",
+                        ]
                 out_file = tempfile.NamedTemporaryFile(mode="w+t")
                 if fuzzer_name == "harvey":
                     config = dict(
@@ -186,6 +204,7 @@ def process_all_tasks(tasks):
                         fuzzer_name == "echidna"
                         or fuzzer_name == "foundry"
                         or fuzzer_name == "hybrid-echidna"
+                        or fuzzer_name == "ityfuzz"
                 ):
                     proc = subprocess.Popen(
                         " ".join(exe),
@@ -294,6 +313,18 @@ def process_all_tasks(tasks):
                     for m in ms:
                         if not (m in violations):
                             violations[m] = 1000000000 * dur
+            elif fuzzer_name == "ityfuzz":
+                from eth_abi import abi
+                duration = time.time_ns() - task["start-time"]
+                violations = dict({})
+                ms = re.findall(
+                    r'log@(\d+) \"([0-9a-z]+)\"',
+                    fuzzer_output,
+                    flags=re.M,
+                )
+                for (ts, log_msg) in ms:
+                    violations[int(abi.decode(['string'], bytes.fromhex(log_msg))[0])] = int(ts) - task["start-time"]
+
             maze_id = task["maze-id"]
             rnd_seed = task["rnd-seed"]
             res = dict(
