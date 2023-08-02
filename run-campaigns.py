@@ -201,10 +201,10 @@ def process_all_tasks(tasks):
                         text=True,
                     )
                 elif (
-                        fuzzer_name == "echidna"
-                        or fuzzer_name == "foundry"
-                        or fuzzer_name == "hybrid-echidna"
-                        or fuzzer_name == "ityfuzz"
+                    fuzzer_name == "echidna"
+                    or fuzzer_name == "foundry"
+                    or fuzzer_name == "hybrid-echidna"
+                    or fuzzer_name == "ityfuzz"
                 ):
                     proc = subprocess.Popen(
                         " ".join(exe),
@@ -315,16 +315,18 @@ def process_all_tasks(tasks):
                             violations[m] = 1000000000 * dur
             elif fuzzer_name == "ityfuzz":
                 from eth_abi import abi
+
                 duration = time.time_ns() - task["start-time"]
                 violations = dict({})
                 ms = re.findall(
-                    r'log@(\d+) \"([0-9a-z]+)\"',
+                    r"log@(\d+) \"([0-9a-z]+)\"",
                     fuzzer_output,
                     flags=re.M,
                 )
-                for (ts, log_msg) in ms:
-                    violations[int(abi.decode(['string'], bytes.fromhex(log_msg))[0])] = int(ts) - task["start-time"]
-
+                for ts, log_msg in ms:
+                    violations[
+                        int(abi.decode(["string"], bytes.fromhex(log_msg))[0])
+                    ] = (int(ts) - task["start-time"])
             maze_id = task["maze-id"]
             rnd_seed = task["rnd-seed"]
             res = dict(
