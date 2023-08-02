@@ -233,12 +233,19 @@ def process_all_tasks(tasks):
                 issues = fuzzer_result["issues"]
                 violations = dict({})
                 for issue in issues:
-                    msg = issue["description"]["tail"]
+                    tail = issue["description"]["tail"]
                     m = re.match(
-                        "A user-provided assertion failed with the message '(.*)'.", msg
+                        "A user-provided assertion failed with the message '(.*)'.",
+                        tail,
                     )
-                    t = issue["extra"]["discoveryTime"]
-                    violations[m[1]] = t
+                    if m:
+                        msg = m[1]
+                        t = issue["extra"]["discoveryTime"]
+                        if msg in violations:
+                            ct = violations[msg]
+                            if ct < t:
+                                t = ct
+                        violations[msg] = t
             elif fuzzer_name == "echidna":
                 duration = time.time_ns() - task["start-time"]
                 violations = dict({})
