@@ -104,6 +104,7 @@ def create_bar_chart(total_bugs, time_limit):
     file_name = "final-coverage"
     df.to_csv(f"{file_name}.csv", encoding="utf-8")
     plot = sns.barplot(data=df, estimator=np.median)
+    plot.set_xticks(plot.get_xticks())
     plot.set_xticklabels(
         plot.get_xticklabels(), rotation=45, horizontalalignment="right"
     )
